@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Your Shopping Cart</h2>
+    {% if products %}
+    <div class="row">
+        {% for item in products %}
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                <img src="{{ item['image'] }}" class="card-img-top" alt="{{ item['name'] }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item['name'] }}</h5>
+                    <!-- <p class="card-text">{{ item['description'] }}</p> -->
+                    <p class="card-text"><strong>Price:</strong> ${{ item['price'] }}</p>
+                    <a href="{{ url_for('remove_from_cart', product_id=item['_id']) }}" class="btn btn-primary">Remove Fron Cart</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="/checkout" class="btn btn-success">Proceed to Checkout</a>
+    {% else %}
+    <p>Your cart is empty.</p>
+    {% endif %}
+</div>
+{% endblock %}
