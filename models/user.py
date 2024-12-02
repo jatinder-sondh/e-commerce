@@ -2,7 +2,7 @@ from flask_login import UserMixin
 from pymongo import MongoClient
 from bson import ObjectId 
 # MongoDB connection setup
-mongo = MongoClient('mongodb://localhost:27017/')
+mongo = MongoClient('mongodb+srv://jatinder090198:4y7gpu01HIM7aufN@cluster0.nuzal.mongodb.net/ecommerce_db?retryWrites=true&w=majority&appName=Cluster0')
 db = mongo['ecommerce_db']  # Replace with your database name
 
 class User(UserMixin):

@@ -3,28 +3,26 @@ from flask_pymongo import PyMongo
 from bson import ObjectId 
 from datetime import datetime
 from flask_bcrypt import Bcrypt
-from pymongo import MongoClient
 import stripe
 import secrets
 import requests
 
 
 app = Flask(__name__)
-app.config["MONGO_URI"] = "mongodb://localhost:27017/ecommerce_db"
+
+# MongoDB connection string for live MongoDB
+app.config["MONGO_URI"] = "mongodb+srv://jatinder090198:4y7gpu01HIM7aufN@cluster0.nuzal.mongodb.net/ecommerce_db?retryWrites=true&w=majority&appName=Cluster0"
 mongo = PyMongo(app)
 users_collection = mongo.db.users
 
 # Initialize Flask-Bcrypt for password hashing
 bcrypt = Bcrypt(app)
 
-
 # Secret key for sessions
 app.secret_key = secrets.token_hex(16)
 
 # Stripe API key setup
 stripe.api_key = 'your-stripe-api-key'  # Set your Stripe key here
-
-
 
 @app.route('/home')
 def home():

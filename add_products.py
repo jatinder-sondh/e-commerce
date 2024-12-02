@@ -4,7 +4,7 @@ from flask_pymongo import PyMongo
 
 # Flask app setup
 app = Flask(__name__)
-app.config["MONGO_URI"] = "mongodb://localhost:27017/ecommerce_db"  # MongoDB URI
+app.config["MONGO_URI"] = "mongodb+srv://jatinder090198:4y7gpu01HIM7aufN@cluster0.nuzal.mongodb.net/ecommerce_db?retryWrites=true&w=majority&appName=Cluster0"
 mongo = PyMongo(app)
 
 # API URL for random products (Fake Store API)
