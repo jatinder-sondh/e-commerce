@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container mt-5">
+<div class="container my-5">
     <h1>Your Orders</h1>
 
     {% if orders %}
@@ -30,7 +30,9 @@
             </tbody>
         </table>
     {% else %}
+    <div class="container" style="height: 60vh;">
         <p>No orders found.</p>
+    </div>
     {% endif %}
 </div>
 {% endblock %}

@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container my-5">
-    <h2>Your Shopping Cart</h2>
+    <h1>Your Shopping Cart</h1>
     {% if products %}
     <div class="row">
         {% for item in products %}
@@ -23,7 +23,9 @@
 
     <a href="/checkout" class="btn btn-success">Proceed to Checkout</a>
     {% else %}
-    <p>Your cart is empty.</p>
+   <div class="container" style="height: 60vh;">
+      <p>Your cart is empty.</p>
+   </div>
     {% endif %}
 </div>
 {% endblock %}
