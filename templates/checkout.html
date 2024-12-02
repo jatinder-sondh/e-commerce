@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container mt-5">
+<div class="container my-5">
     <h1>Checkout</h1>
 
     <div class="row">
@@ -44,8 +44,16 @@
                 </li>
                 {% endfor %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <strong>Total</strong>
-                    <strong>${{ total_price }}</strong>
+                    <span>Total</span>
+                    <span>${{ total_price }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>Tax</span>
+                    <span>${{ tax }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <strong>Final</strong>
+                    <strong>${{ final_total }}</strong>
                 </li>
             </ul>
         </div>

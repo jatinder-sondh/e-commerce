@@ -24,7 +24,7 @@ app.secret_key = secrets.token_hex(16)
 # Stripe API key setup
 stripe.api_key = 'your-stripe-api-key'  # Set your Stripe key here
 
-@app.route('/home')
+@app.route('/shop')
 def home():
     search_query = request.args.get('search')  # Capture the search query
     if search_query:
@@ -150,6 +150,13 @@ def checkout():
 
         total_price = sum(product['price'] for product in products)
 
+        tax_rate = 13
+        tax = total_price * (tax_rate / 100) 
+
+        total_price = round(total_price, 2)
+        tax = round(tax, 2)
+        final_total = round(total_price + tax, 2)
+
         order = {
             'customer_name': customer_name,
             'address': address,
@@ -157,6 +164,8 @@ def checkout():
             'phone': phone,
             'products': products,
             'total_price': total_price,
+            'final_total': final_total,
+            'tax': tax,
             'status': 'Pending',
             'date': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         }
@@ -170,7 +179,15 @@ def checkout():
     products = list(mongo.db.products.find({'_id': {'$in': object_ids}}))
     total_price = sum(product['price'] for product in products)
 
-    return render_template('checkout.html', products=products, total_price=total_price)
+    tax_rate = 13
+    tax = total_price * (tax_rate / 100)
+
+    total_price = round(total_price, 2)
+    tax = round(tax, 2)
+    final_total = round(total_price + tax, 2)
+
+
+    return render_template('checkout.html', products=products, total_price=total_price, tax=tax, final_total=final_total)
 
 @app.route('/confirmation/<order_id>')
 def confirmation(order_id):

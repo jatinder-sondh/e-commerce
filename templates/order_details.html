@@ -8,9 +8,10 @@
     <p><strong>Date:</strong> {{ order.get('date', 'N/A') }}</p>
     <p><strong>Status:</strong> {{ order.status }}</p>
     <p><strong>Total Price:</strong> ${{ order.total_price }}</p>
-
+    <p><strong>Tax:</strong> ${{ order.tax }}</p>
+    <p><strong>Final Price:</strong> ${{ order.final_total }}</p>
     <h2>Products</h2>
-    <ul class="list-group">
+    <ul class="list-group pb-4">
         {% for product in order.products %}
         <li class="list-group-item d-flex justify-content-between align-items-center">
             <span>{{ product.name }}</span>
