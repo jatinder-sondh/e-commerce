@@ -19,13 +19,9 @@ This repository contains a Flask-based e-commerce application that uses MongoDB 
 Install the required Python dependencies using pip:
 pip install flask_pymongo flask-login flask_bcrypt stripe
 
-3. **Start the MongoDB Server**
-Ensure the MongoDB server is running:
-mongod
-
-4. **Run the Application**
+3. **Run the Application**
 Start the Flask application:
 python app.py
 
-5. **Open the Application in Your Browser**
+4. **Open the Application in Your Browser**
 Navigate to the following URL to access the application: http://localhost:5000
